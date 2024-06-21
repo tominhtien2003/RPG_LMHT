@@ -33,7 +33,6 @@ public class SkillManager : MonoBehaviour
 
             if (hitColliders.Length > 0)
             {
-                playerController.SetTarget(hitColliders[0].transform);
                 StartCoroutine(TakeDamageBySkill());
             }
 
@@ -48,9 +47,10 @@ public class SkillManager : MonoBehaviour
     private IEnumerator TakeDamageBySkill()
     {
         Health healthEnemy = playerController.CurrentTarget.GetComponent<Health>();
+        healthEnemy.TakeDamage(.1f);
         while (!finishBeam.activeSelf)
         {
-            healthEnemy.TakeDamage(.1f);
+            
             yield return null;
         } 
     }

@@ -57,6 +57,6 @@ public class Health : MonoBehaviour
         gfx.SetActive(true);
 
         healthBar.gameObject.SetActive(true);
-        healthBar.value = 20f;
+        healthBar.value = 1f;
     }
 }
