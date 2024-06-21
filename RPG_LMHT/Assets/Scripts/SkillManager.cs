@@ -27,8 +27,12 @@ public class SkillManager : MonoBehaviour
         if (beam.activeSelf)
         {
             Vector3 boxCenter = transform.TransformPoint(areaTakedamage.center);
+
             Vector3 boxHalfExtents = areaTakedamage.bounds.size;
+
             Quaternion boxOrientation = transform.rotation;
+
+
             Collider[] hitColliders = Physics.OverlapBox(boxCenter, boxHalfExtents, boxOrientation, enemyMask);
 
             if (hitColliders.Length > 0)
@@ -38,8 +42,11 @@ public class SkillManager : MonoBehaviour
 
             if (finishBeam.activeSelf)
             {
+
                 shootSkill.SetActive(false);
+
                 finishBeam.SetActive(false);
+
                 beam.SetActive(false);
             }
         }
@@ -47,34 +54,43 @@ public class SkillManager : MonoBehaviour
     private IEnumerator TakeDamageBySkill()
     {
         Health healthEnemy = playerController.CurrentTarget.GetComponent<Health>();
-        healthEnemy.TakeDamage(.1f);
-        while (!finishBeam.activeSelf)
-        {
-            
-            yield return null;
-        } 
+
+        healthEnemy.TakeDamage(.01f);
+
+        yield return null;
     }
     public void Shoot()
     {
         GetComponent<NavMeshAgent>().SetDestination(transform.position);
+
         StartCoroutine(IEShoot());
     }
     private IEnumerator IEShoot()
     {
         textMeshProUGUI.gameObject.SetActive(true);
+
         isShooting = true;
+
         shootSkill.SetActive(true);
+
         icon.color = new Color(1, 1, 1, .35f);
+
         while (shootCooldown > 0)
         {
             textMeshProUGUI.text = shootCooldown + "";
+
             shootCooldown--;
+
             yield return new WaitForSeconds(1f);
         }
         icon.color = Color.white;
+
         shootCooldown = 20;
+
         shootSkill.SetActive(false);
+
         isShooting = false;
+
         textMeshProUGUI.gameObject.SetActive(false);
     }
 }
