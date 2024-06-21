@@ -5,7 +5,11 @@ using UnityEngine.AI;
 
 public class PlayerCombat : MonoBehaviour
 {
-    public event EventHandler OnAttackingEnemy;
+    public event EventHandler<OnAttackingEnemyEventArgs> OnAttackingEnemy;
+    public class OnAttackingEnemyEventArgs : EventArgs
+    {
+        public Transform currentEnemy { get; set; }
+    }
 
     [SerializeField] private AnimationClip[] animationClipAttacks;
 
@@ -22,12 +26,12 @@ public class PlayerCombat : MonoBehaviour
 
     private void Update()
     {
-        HandleAttackInput();
+        //HandleAttackInput();
     }
 
-    private void HandleAttackInput()
+    public void HandleAttackInput()
     {
-        if (Input.GetMouseButtonDown(1) && !isAttacking)
+        if (!isAttacking)
         {
             StopMovement();
             
@@ -57,7 +61,7 @@ public class PlayerCombat : MonoBehaviour
         if (playerController.CheckIfInEnemyRegion())
         {
             playerController.CurrentTarget.GetComponent<Health>().TakeDamage(.1f);
-            OnAttackingEnemy?.Invoke(this, EventArgs.Empty);
+            OnAttackingEnemy?.Invoke(this, new OnAttackingEnemyEventArgs { currentEnemy = playerController.CurrentTarget }) ;
         }
         yield return new WaitForSeconds(attackCooldown / 2);
 
@@ -68,5 +72,8 @@ public class PlayerCombat : MonoBehaviour
     {
         GetComponent<NavMeshAgent>().SetDestination(transform.position);
     }
+    //private bool CheckButtonPressed()
+    //{
 
+    //}
 }

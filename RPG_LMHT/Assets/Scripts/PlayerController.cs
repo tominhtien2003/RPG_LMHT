@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 
 
     [SerializeField] float stopDistance = 13f;
+    [SerializeField] GameInput gameInput;
 
     [Header("Components")]
     private Camera mainCamera;
@@ -15,6 +16,7 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
 
     private bool isMoving = false;
+    private bool activateMovement = false;
     public Transform CurrentTarget { get; set; }
 
     private void Awake()
@@ -26,6 +28,18 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         mainCamera = Camera.main;
+        gameInput.playerInputAction.Player.Move.started += Move_started;
+        gameInput.playerInputAction.Player.Move.canceled += Move_canceled;
+    }
+
+    private void Move_canceled(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        activateMovement = false;
+    }
+
+    private void Move_started(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        activateMovement = true;
     }
 
     private void Update()
@@ -36,24 +50,35 @@ public class PlayerController : MonoBehaviour
 
     private void HandleMovementInput()
     {
+        if (activateMovement)
+        {
+            Vector2 inputVector = gameInput.GetInputVector();
+            Vector3 moveDirec = new Vector3(inputVector.x, 0f, inputVector.y);
+            if (moveDirec != Vector3.zero)
+            {
+                MoveToPosition(moveDirec + transform.position);
+            }
+        }
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out RaycastHit hit))
+            if (Physics.Raycast(ray, out RaycastHit hit ))
             {
                 if (hit.collider.gameObject.layer == 7) // Layer 7 represents enemy layer
                 {
                     SetTarget(hit.transform);
+
+                    MoveToPosition(hit.point);
                 }
                 else
                 {
                     ClearTarget();
                 }
-                MoveToPosition(hit.point);
             }
         }
         CheckIfArrived();
+        
     }
 
     private void HandleTargetFollowing()

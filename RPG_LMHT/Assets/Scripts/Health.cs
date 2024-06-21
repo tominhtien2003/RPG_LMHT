@@ -44,6 +44,19 @@ public class Health : MonoBehaviour
 
             healthPlayer.healthBar.value = 1f;
         }
-        gameObject.SetActive(false);
+        gfx.SetActive(false);
+
+        healthBar.gameObject.SetActive(false);
+
+        StartCoroutine(IERevival());
+    }
+    private IEnumerator IERevival()
+    {
+        yield return new WaitForSeconds(10f);
+
+        gfx.SetActive(true);
+
+        healthBar.gameObject.SetActive(true);
+        healthBar.value = 20f;
     }
 }

@@ -3,8 +3,10 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private AnimationClip animationClipAttack;
+    [SerializeField] private AnimationClip[] animationClipAttacks;
+    [SerializeField] private string[] nameTriggerAnimator;
 
+    private int indexAnimationClipAttack = -1;
     private Transform player;
     private Animator animator;
     private bool attackMode = false;
@@ -16,18 +18,21 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         player = GameObject.Find("Player").transform;
-        player.GetComponent<PlayerCombat>().OnAttackingEnemy += PlayerCombat_OnAttackingEnemy;
+        player.GetComponent<PlayerCombat>().OnAttackingEnemy += Enemy_OnAttackingEnemy;
         player.GetComponent<PlayerController>().OnWithoutRegionEnemy += Enemy_OnWithoutRegionEnemy;
+    }
+
+    private void Enemy_OnAttackingEnemy(object sender, PlayerCombat.OnAttackingEnemyEventArgs e)
+    {
+        if (e.currentEnemy == transform)
+        {
+            attackMode = true;
+        }
     }
 
     private void Enemy_OnWithoutRegionEnemy(object sender, System.EventArgs e)
     {
         attackMode = false;
-    }
-
-    private void PlayerCombat_OnAttackingEnemy(object sender, System.EventArgs e)
-    {
-        attackMode = true;
     }
     private void Update()
     {
@@ -43,13 +48,19 @@ public class Enemy : MonoBehaviour
             StartCoroutine(IEAttack());
         }
     }
+    private int GetIndexOfAnimationClipAttacks()
+    {
+        return indexAnimationClipAttack = (++indexAnimationClipAttack) % animationClipAttacks.Length;
+    }
     private IEnumerator IEAttack()
     {
         isAttacking = true;
 
-        float attackCooldown = animationClipAttack.length;
+        int idx = GetIndexOfAnimationClipAttacks();
 
-        animator.SetTrigger("Attack");
+        float attackCooldown = animationClipAttacks[idx].length;
+
+        animator.SetTrigger(nameTriggerAnimator[idx]+"");
 
         yield return new WaitForSeconds(attackCooldown / 2);
 
