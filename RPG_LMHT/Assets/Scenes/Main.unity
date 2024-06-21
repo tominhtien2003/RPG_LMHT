@@ -1222,7 +1222,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 547677039}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1394659304}
+        m_TargetAssemblyTypeName: PlayerCombat, Assembly-CSharp
+        m_MethodName: HandleAttackInput
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &554260846
 GameObject:
   m_ObjectHideFlags: 0
@@ -1299,6 +1311,123 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 554260846}
   m_CullTransparentMesh: 1
+--- !u!1001 &558422538
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 608148052057964571, guid: c02d9ef745b89564b82fa23b1939b5fb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1677334750579945604, guid: c02d9ef745b89564b82fa23b1939b5fb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1677334750579945604, guid: c02d9ef745b89564b82fa23b1939b5fb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1677334750579945604, guid: c02d9ef745b89564b82fa23b1939b5fb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 19.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 1677334750579945604, guid: c02d9ef745b89564b82fa23b1939b5fb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1677334750579945604, guid: c02d9ef745b89564b82fa23b1939b5fb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1677334750579945604, guid: c02d9ef745b89564b82fa23b1939b5fb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1677334750579945604, guid: c02d9ef745b89564b82fa23b1939b5fb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1677334750579945604, guid: c02d9ef745b89564b82fa23b1939b5fb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1677334750579945604, guid: c02d9ef745b89564b82fa23b1939b5fb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1677334750579945604, guid: c02d9ef745b89564b82fa23b1939b5fb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1677334750579945605, guid: c02d9ef745b89564b82fa23b1939b5fb, type: 3}
+      propertyPath: m_Name
+      value: Gojo Red Hollow
+      objectReference: {fileID: 0}
+    - target: {fileID: 1677334750583695769, guid: c02d9ef745b89564b82fa23b1939b5fb, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1677334750583695770, guid: c02d9ef745b89564b82fa23b1939b5fb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1677334751497396381, guid: c02d9ef745b89564b82fa23b1939b5fb, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1677334751522551275, guid: c02d9ef745b89564b82fa23b1939b5fb, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1677334751522551276, guid: c02d9ef745b89564b82fa23b1939b5fb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1677334751722422022, guid: c02d9ef745b89564b82fa23b1939b5fb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1677334751868008905, guid: c02d9ef745b89564b82fa23b1939b5fb, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1677334751974549046, guid: c02d9ef745b89564b82fa23b1939b5fb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1677334752141716671, guid: c02d9ef745b89564b82fa23b1939b5fb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1677334752237580840, guid: c02d9ef745b89564b82fa23b1939b5fb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1677334752237580855, guid: c02d9ef745b89564b82fa23b1939b5fb, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1677334752258286487, guid: c02d9ef745b89564b82fa23b1939b5fb, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2114876872377504100, guid: c02d9ef745b89564b82fa23b1939b5fb, type: 3}
+      propertyPath: hue
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860084888321156758, guid: c02d9ef745b89564b82fa23b1939b5fb, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c02d9ef745b89564b82fa23b1939b5fb, type: 3}
 --- !u!1001 &625304702
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9130,3 +9259,4 @@ SceneRoots:
   - {fileID: 107880617}
   - {fileID: 174958704}
   - {fileID: 155624582}
+  - {fileID: 558422538}

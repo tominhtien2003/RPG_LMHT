@@ -26,7 +26,7 @@ public class PlayerCombat : MonoBehaviour
 
     private void Update()
     {
-        //HandleAttackInput();
+
     }
 
     public void HandleAttackInput()
