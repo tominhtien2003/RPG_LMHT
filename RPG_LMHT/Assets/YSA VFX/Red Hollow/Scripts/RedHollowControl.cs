@@ -18,6 +18,7 @@ public class RedHollowControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //hue = Random.Range(0.0f, 1.0f);
         transform.GetChild(0).GetComponent<HueControl>().hue = hue;
     }
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour
 {
@@ -71,7 +72,7 @@ public class PlayerController : MonoBehaviour
 
                     MoveToPosition(hit.point);
                 }
-                else
+                else if (!EventSystem.current.IsPointerOverGameObject())
                 {
                     ClearTarget();
                 }
@@ -115,7 +116,7 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("IsMoving", isMoving);
     }
 
-    private void SetTarget(Transform target)
+    public void SetTarget(Transform target)
     {
         CurrentTarget = target;
     }

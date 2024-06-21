@@ -72,8 +72,4 @@ public class PlayerCombat : MonoBehaviour
     {
         GetComponent<NavMeshAgent>().SetDestination(transform.position);
     }
-    //private bool CheckButtonPressed()
-    //{
-
-    //}
 }
